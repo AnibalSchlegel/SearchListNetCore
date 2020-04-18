@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SearchList
 {
@@ -18,9 +17,7 @@ namespace SearchList
         public Search(Node startNode, Node endNode, List<Relation> relations)
         {
             this.StartNode = startNode;
-            this.StartNode.SetAsStartNode();
             this.EndNode = endNode;
-            this.EndNode.SetAsEndNode();
 
             for (int i = 0; i < relations.Count; i++) 
             {
@@ -98,7 +95,6 @@ namespace SearchList
                             openList[j] = newNodes[i];
                             updated = true;
                         }
-                        //updated = true;
                         break;
                     }
                 }
@@ -113,13 +109,6 @@ namespace SearchList
             {
                 if (closedList[i].TargetNode.Name == lowestWeight.TargetNode.Name)
                 {
-                    //if (closedList[i].TargetNode.TotalWeight > lowestWeight.TargetNode.TotalWeight)
-                    //{
-                    //    closedList[i] = lowestWeight.Clone();
-                    //    CutOppositeHubConnection(closedList[i]);
-                    //}
-
-                    //return;
                     if (closedList[i].TargetNode.TotalWeight <= lowestWeight.TargetNode.TotalWeight)
                         return;
                     else
@@ -131,23 +120,7 @@ namespace SearchList
             }
 
             closedList.Add(lowestWeight.Clone());
-            //CutOppositeHubConnection(closedList[closedList.Count - 1]);
         }
-
-        //private void CutOppositeHubConnection(Relation relation)
-        //{
-        //    if (SearchTree.ContainsKey(relation.TargetNode.Name))
-        //    {
-        //        for (int n = 0; n < SearchTree[relation.TargetNode.Name].Count; n++)
-        //        {
-        //            if (SearchTree[relation.TargetNode.Name][n].TargetNode.Name == relation.SourceNode.Name)
-        //            {
-        //                SearchTree[relation.TargetNode.Name].RemoveAt(n);
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
 
         private List<Relation> BuildPath(List<Relation> closedList)
         {
@@ -163,7 +136,6 @@ namespace SearchList
             {
                 finalPath.Add(last);
 
-                //if (last.SourceNode.Type == NodeType.StartNode)
                 if (last.SourceNode.Name == StartNode.Name)
                     return finalPath;
 
@@ -225,23 +197,11 @@ namespace SearchList
             else return null;
         }
 
-        //private int GetTotalWeight(string nodeName, List<Relation> closedList)
-        //{
-        //    for (int i = 0; i < closedList.Count; i++)
-        //    {
-        //        if (closedList[i].TargetNode.Name == nodeName)
-        //        {
-        //            return closedList[i].TargetNode.TotalWeight;
-        //        }
-        //    }
-        //    return 0;
-        //}
-
         private List<Relation> GetNextOpenNodes(Node lastClosed, List<Relation> closedList)
         {
             if (lastClosed != null)
             {
-                Relation temp = null;
+                Relation temp;
 
                 List<Relation> newOpens = new List<Relation>();
 
