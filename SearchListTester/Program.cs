@@ -28,24 +28,24 @@ namespace SearchListTester
                 new Relation(){ SourceNode = new Node("G"), TargetNode = new Node("H"), Cost = 1 },
                 new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("I"), Cost = 3 },
                 
-                //two ways
-                new Relation(){ SourceNode = new Node("B"), TargetNode = new Node("A"), Cost = 4 },
-                new Relation(){ SourceNode = new Node("C"), TargetNode = new Node("A"), Cost = 3 },
-                new Relation(){ SourceNode = new Node("D"), TargetNode = new Node("A"), Cost = 7 },
-                new Relation(){ SourceNode = new Node("C"), TargetNode = new Node("B"), Cost = 2 },
-                new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("B"), Cost = 4 },
-                new Relation(){ SourceNode = new Node("D"), TargetNode = new Node("C"), Cost = 1 },
-                new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("C"), Cost = 2 },
-                new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("D"), Cost = 3 },
-                new Relation(){ SourceNode = new Node("F"), TargetNode = new Node("B"), Cost = 3 },
-                new Relation(){ SourceNode = new Node("F"), TargetNode = new Node("E"), Cost = 4 },
-                new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("D"), Cost = 5 },
-                new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("E"), Cost = 8 },
-                new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("H"), Cost = 3 },
-                new Relation(){ SourceNode = new Node("G"), TargetNode = new Node("E"), Cost = 4 },
-                new Relation(){ SourceNode = new Node("G"), TargetNode = new Node("F"), Cost = 2 },
-                new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("G"), Cost = 1 },
-                new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("E"), Cost = 5 }
+                ////two ways
+                //new Relation(){ SourceNode = new Node("B"), TargetNode = new Node("A"), Cost = 4 },
+                //new Relation(){ SourceNode = new Node("C"), TargetNode = new Node("A"), Cost = 3 },
+                //new Relation(){ SourceNode = new Node("D"), TargetNode = new Node("A"), Cost = 7 },
+                //new Relation(){ SourceNode = new Node("C"), TargetNode = new Node("B"), Cost = 2 },
+                //new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("B"), Cost = 4 },
+                //new Relation(){ SourceNode = new Node("D"), TargetNode = new Node("C"), Cost = 1 },
+                //new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("C"), Cost = 2 },
+                //new Relation(){ SourceNode = new Node("E"), TargetNode = new Node("D"), Cost = 3 },
+                //new Relation(){ SourceNode = new Node("F"), TargetNode = new Node("B"), Cost = 3 },
+                //new Relation(){ SourceNode = new Node("F"), TargetNode = new Node("E"), Cost = 4 },
+                //new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("D"), Cost = 5 },
+                //new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("E"), Cost = 8 },
+                //new Relation(){ SourceNode = new Node("I"), TargetNode = new Node("H"), Cost = 3 },
+                //new Relation(){ SourceNode = new Node("G"), TargetNode = new Node("E"), Cost = 4 },
+                //new Relation(){ SourceNode = new Node("G"), TargetNode = new Node("F"), Cost = 2 },
+                //new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("G"), Cost = 1 },
+                //new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("E"), Cost = 5 }
             };
 
             Node start = new Node("F");

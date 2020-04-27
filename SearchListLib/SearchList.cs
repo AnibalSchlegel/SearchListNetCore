@@ -14,23 +14,31 @@ namespace SearchList
 
         #region Constructor
 
-        public Search(Node startNode, Node endNode, List<Relation> relations)
+        public Search(Node startNode, Node endNode, List<Relation> relations, bool twoWays = true)
         {
             this.StartNode = startNode;
             this.EndNode = endNode;
 
-            for (int i = 0; i < relations.Count; i++) 
+            for (int i = 0; i < relations.Count; i++)
             {
-                if (relations[i].TargetNode.Name == startNode.Name || relations[i].SourceNode.Name == endNode.Name)
-                    continue;
+                BuildSearchTree(relations[i]);
 
-                if (!SearchTree.ContainsKey(relations[i].SourceNode.Name))
-                    SearchTree.Add(relations[i].SourceNode.Name, new List<Relation>());
+                if (twoWays)
+                    BuildSearchTree(relations[i].GetInverse());
+            }
+        }
 
-                if (!SearchTree.ContainsKey(relations[i].TargetNode.Name))
-                    SearchTree.Add(relations[i].TargetNode.Name, new List<Relation>());
+        private void BuildSearchTree(Relation rel)
+        {
+            if (rel.TargetNode.Name != this.StartNode.Name && rel.SourceNode.Name != this.EndNode.Name)
+            {
+                if (!SearchTree.ContainsKey(rel.SourceNode.Name))
+                    SearchTree.Add(rel.SourceNode.Name, new List<Relation>());
 
-                SearchTree[relations[i].SourceNode.Name].Add(relations[i]);
+                if (!SearchTree.ContainsKey(rel.TargetNode.Name))
+                    SearchTree.Add(rel.TargetNode.Name, new List<Relation>());
+
+                SearchTree[rel.SourceNode.Name].Add(rel);
             }
         }
 

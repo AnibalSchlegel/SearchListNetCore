@@ -18,6 +18,8 @@ namespace SearchList
             else return false;
         }
 
+        internal Relation GetInverse() => new Relation() { SourceNode = this.TargetNode.Clone(), TargetNode = this.SourceNode.Clone(), Cost = this.Cost };
+
         public override string ToString() => string.Format("{0}->{1} ({2})", this.SourceNode.Name, this.TargetNode.Name, this.Cost);
     }
 }
