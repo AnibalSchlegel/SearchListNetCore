@@ -67,16 +67,12 @@ namespace SearchList
 
         private bool NotFinisished(List<Relation> closedList)
         {
-            bool found = false;
             for (int j = 0; j < closedList.Count; j++)
             {
                 if (EndNode.Name == closedList[j].TargetNode.Name)
-                    found = true;
+                    return false;
             }
-            if (!found)
-                return true;
-        
-            return false;
+            return true;
         }
 
         private void UpdateOpenList(List<Relation> openList, List<Relation> newNodes)
