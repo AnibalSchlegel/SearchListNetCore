@@ -11,12 +11,7 @@ namespace SearchList
 
         internal Relation Clone() => new Relation() { SourceNode = this.SourceNode.Clone(), TargetNode = this.TargetNode.Clone(), Cost = this.Cost };
 
-        internal bool InverseEquals(Relation other)
-        {
-            if (this.SourceNode.Name == other.TargetNode.Name && this.TargetNode.Name == other.SourceNode.Name)
-                return true;
-            else return false;
-        }
+        internal bool InverseEquals(Relation other) => this.SourceNode.Name == other.TargetNode.Name && this.TargetNode.Name == other.SourceNode.Name;
 
         internal Relation GetInverse() => new Relation() { SourceNode = this.TargetNode.Clone(), TargetNode = this.SourceNode.Clone(), Cost = this.Cost };
 

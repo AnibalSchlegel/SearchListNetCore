@@ -11,6 +11,5 @@
         internal Node() { }
 
         internal Node Clone() => new Node() { Name = this.Name, TotalWeight = this.TotalWeight, Weight = this.Weight };
-    
     }
 }

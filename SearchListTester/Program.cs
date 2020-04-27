@@ -29,8 +29,8 @@ namespace SearchListTester
                 new Relation(){ SourceNode = new Node("H"), TargetNode = new Node("I"), Cost = 3 },
             };
 
-            Node start = new Node("H");
-            Node end = new Node("A");
+            Node start = new Node("A");
+            Node end = new Node("I");
 
             var search = new Search(start, end, relations);
             foreach (Relation r in search.Run())
