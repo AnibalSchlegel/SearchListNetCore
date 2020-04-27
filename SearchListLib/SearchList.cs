@@ -113,13 +113,9 @@ namespace SearchList
             {
                 if (closedList[i].TargetNode.Name == lowestWeight.TargetNode.Name)
                 {
-                    if (closedList[i].TargetNode.TotalWeight <= lowestWeight.TargetNode.TotalWeight)
-                        return;
-                    else
-                    {
+                    if (closedList[i].TargetNode.TotalWeight > lowestWeight.TargetNode.TotalWeight)
                         closedList[i] = lowestWeight.Clone();
-                        return;
-                    }
+                    return; 
                 }
             }
 
@@ -160,55 +156,52 @@ namespace SearchList
         private Relation FindLastNodeInPath(List<Relation> closedList)
         {
             int minWeight = int.MaxValue;
-            int index = -1;
+            Relation relation = null;
 
             for (int i = 0; i < closedList.Count; i++)
             {
                 if (closedList[i].TargetNode.Name == EndNode.Name && closedList[i].TargetNode.TotalWeight < minWeight)
                 {
                     minWeight = closedList[i].TargetNode.TotalWeight;
-                    index = i;
+                    relation= closedList[i];
                 }
             }
 
-            if (index == -1)
-                return null;
-            else
-                return closedList[index];
+            return relation;
         }
 
         private Relation ExtractLowestWeightedNode(List<Relation> openList)
         {
             int minWeight = int.MaxValue;
-            int index = -1;
+            Relation relation = null;
 
             for (int i = 0; i < openList.Count; i++)
             {
                 if (openList[i].TargetNode.TotalWeight < minWeight)
                 {
                     minWeight = openList[i].TargetNode.TotalWeight;
-                    index = i;
+                    relation = openList[i];
                 }
             }
 
-            if (index > -1)
+            if (relation != null)
             {
-                Relation found = openList[index].Clone();
-                openList.RemoveAt(index);
+                Relation cloned = relation.Clone();
+                openList.Remove(relation);
 
-                return found;
+                return cloned;
             }
             else return null;
         }
 
         private List<Relation> GetNextOpenNodes(Node lastClosed, List<Relation> closedList)
         {
+            List<Relation> newOpens = new List<Relation>();
+
             if (lastClosed != null)
             {
                 Relation temp;
-
-                List<Relation> newOpens = new List<Relation>();
-
+                
                 for (int i = 0; i < SearchTree[lastClosed.Name].Count; i++)
                 {
                     temp = SearchTree[lastClosed.Name][i].Clone();
@@ -231,10 +224,9 @@ namespace SearchList
                     temp.TargetNode.TotalWeight = temp.TargetNode.Weight + lastClosed.TotalWeight;
                     newOpens.Add(temp);
                 }
-
-                return newOpens;
             }
-            else return new List<Relation>();
+            
+            return newOpens;
         }
 
         #endregion
