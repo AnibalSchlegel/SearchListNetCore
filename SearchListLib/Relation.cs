@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.CompilerServices;
+
 namespace SearchList
 {
     public class Relation
@@ -10,6 +12,9 @@ namespace SearchList
         public Relation() { }
 
         internal Relation Clone() => new Relation() { SourceNode = this.SourceNode.Clone(), TargetNode = this.TargetNode.Clone(), Cost = this.Cost };
+
+        internal bool IsEquals(Relation other) => this.SourceNode.Name == other.SourceNode.Name && this.TargetNode.Name == other.TargetNode.Name;
+        
 
         internal bool InverseEquals(Relation other) => this.SourceNode.Name == other.TargetNode.Name && this.TargetNode.Name == other.SourceNode.Name;
 

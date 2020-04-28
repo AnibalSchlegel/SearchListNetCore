@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SearchList
 {
@@ -64,7 +65,7 @@ namespace SearchList
 
             while (NotFinisished(closedList))
             {
-                UpdateOpenList(openList, GetNextOpenNodes(lastClosed, closedList));
+                UpdateOpenList(openList, GetNextOpenNodes(lastClosed, closedList, openList));
                 lowestWeight = ExtractLowestWeightedNode(openList);
                 UpdateClosedList(closedList, lowestWeight);
                 lastClosed = lowestWeight.TargetNode;
@@ -194,7 +195,7 @@ namespace SearchList
             else return null;
         }
 
-        private List<Relation> GetNextOpenNodes(Node lastClosed, List<Relation> closedList)
+        private List<Relation> GetNextOpenNodes(Node lastClosed, List<Relation> closedList, List<Relation> openList)
         {
             List<Relation> newOpens = new List<Relation>();
 
@@ -206,18 +207,7 @@ namespace SearchList
                 {
                     temp = SearchTree[lastClosed.Name][i].Clone();
 
-                    bool discard = false;
-
-                    for (int c = 0; c < closedList.Count; c++)
-                    {
-                        if (closedList[c].InverseEquals(temp))
-                        {
-                            discard = true;
-                            break;
-                        }
-                    }
-
-                    if (discard)
+                    if (closedList.Any(x=> x.InverseEquals(temp)) || openList.Any(x=>x.IsEquals(temp)))
                         continue;
 
                     temp.TargetNode.Weight = temp.Cost;
