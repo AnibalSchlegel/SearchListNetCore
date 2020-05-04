@@ -63,7 +63,7 @@ namespace SearchList
                 openList.Add(temp);
             }
 
-            while (NotFinisished(closedList))
+            while (NotFinished(closedList))
             {
                 UpdateOpenList(openList, GetNextOpenNodes(lastClosed, closedList, openList));
                 lowestWeight = ExtractLowestWeightedNode(openList);
@@ -74,7 +74,7 @@ namespace SearchList
             return BuildPath(closedList);
         }
 
-        private bool NotFinisished(List<Relation> closedList)
+        private bool NotFinished(List<Relation> closedList)
         {
             for (int j = 0; j < closedList.Count; j++)
             {

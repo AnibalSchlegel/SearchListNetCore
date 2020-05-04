@@ -1,7 +1,4 @@
-﻿
-using System.Runtime.CompilerServices;
-
-namespace SearchList
+﻿namespace SearchList
 {
     public class Relation
     {
